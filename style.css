@@ -1,4 +1,18 @@
 #profile {
-    display: grid;
-    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.card {
+    width: 200px;
+    background:none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 40px 40px 40px 40px;
+}
+
+img {
+    display: flex;
+    background-image: none;
 }

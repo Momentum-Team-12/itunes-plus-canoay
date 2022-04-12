@@ -1,44 +1,40 @@
-console.log('linked')
+console.log("linked");
 
-let profileDiv = document.querySelector('#profile')
+let profileDiv = document.querySelector("#profile");
 
-
- fetch ('https://itunes.apple.com/lookup?id=2987400&entity=song', {
-    method: 'GET',
-})
- .then(function (response) {
-        return response.json()
-})
-.then (function (data) {
-    // for (let artist of data) {
-        // console.log('artists')
-        // let nameDiv = document.createElement('p')
-        // nameDiv.classList.add('artist')
-        // // nameDiv.innerHTML = '<a href="' + i.html_url + '">' + i.artistName + "</a>" 
-        //   nameDiv.innerText = artist.artistName  
-        // profileDiv.appendChild(nameDiv)
-        console.log(data.results)
-    //  let nameDiv = document.createElement('p')  
-    //  nameDiv.classList.add('artist')
-    //  nameDiv.innerText = results.artistName 
-    //  profileDiv.appendChild(nameDiv)
-    // }
-
-    let results = data.results.slice(1)
+fetch(
+  "https://proxy-itunes-api.glitch.me/search?term=dillinger-escape-plan&media=music",
+  {
+    method: "GET",
+  }
+)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    let results = data.results;
     for (let result of results) {
-    let nameDiv = document.createElement('p')  
-     nameDiv.classList.add('artist')
-     nameDiv.innerText = result.artistName 
-     profileDiv.appendChild(nameDiv)
+      let artDirectLink = result.artworkUrl100.toString();
 
-    let songDiv = document.createElement('p')  
-     songDiv.classList.add('song')
-     songDiv.innerText = result.trackName 
-     profileDiv.appendChild(songDiv)
-    
-    let artDiv = document.createElement('img')  
-     artDiv.classList.add('song')
-     artDiv.src = result.artworkUrl100 
-     profileDiv.appendChild(artDiv)
+      let artConvertedLink = artDirectLink.slice(0, -13) + "300x300bb.jpg";
+
+      let cardDiv = document.createElement("div");
+      cardDiv.classList.add("card");
+      profileDiv.appendChild(cardDiv);
+
+      let artDiv = document.createElement("img");
+      artDiv.classList.add("art");
+      artDiv.src = artConvertedLink;
+      cardDiv.appendChild(artDiv);
+
+      let songDiv = document.createElement("div");
+      songDiv.classList.add("song");
+      songDiv.innerText = result.trackName;
+      cardDiv.appendChild(songDiv);
+
+      let nameDiv = document.createElement("div");
+      nameDiv.classList.add("artist");
+      nameDiv.innerText = result.artistName;
+      cardDiv.appendChild(nameDiv);
     }
-})
+  });
