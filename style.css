@@ -14,7 +14,7 @@ header {
     flex-wrap: wrap;
 }
 .card {
-    width: 200px;
+    width: 300px;
     background:none;
     display: flex;
     flex-direction: column;
@@ -22,14 +22,20 @@ header {
     margin: 40px 40px 40px 40px;
 }
 
-img {
-    display: flex;
-    background-image: none;
-}
+/* img { */
+    /* display: flex; */
+    /* background-image: none; */
+/* } */
 
 hr {
     border-bottom: 3px solid black;
     margin-left: 2.2%;
-   margin-right: 10%;
-  
+    margin-right: 10%;
+}
+
+form {
+    width: 75%;
+    margin-left: 2.2%;
+    display: flex;
+    justify-content: center;
 }

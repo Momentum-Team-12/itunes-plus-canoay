@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"> -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js" defer></script>
-  <script src="functions.js" defer></script>
+  <script src="functions.js"></script>
   <script src="main.js" defer></script>
   <title>Music Search</title>
 </head>
 <body>
   <header>Elliott's Music Search Engine</header>
-
-  <form method="get" action="">
-    <input type="text" name="search" id="search" value="" />
-    <input type="submit" name="submit" value="Search" />
+<br>
+<br>
+  <form id="sForm" method="get" action="/">
+    <input type="text" name="search" id="input" value="" placeholder="Search Artist or Song Title" />
+    <input type="submit" name="submit" id="search" value="Search" />
   </form>
   <hr>
   <div id="profile" ></div>
