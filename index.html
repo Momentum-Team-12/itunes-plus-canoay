@@ -8,17 +8,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
   <link rel="stylesheet" href="style.css">
-  <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css" -->
-    <!-- integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous"> -->
-    <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/base-min.css"> -->
-    <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/grids-min.css"> -->
-    <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/grids-responsive-min.css"> -->
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js" defer></script>
+  <script src="functions.js" defer></script>
   <script src="main.js" defer></script>
   <title>Music Search</title>
 </head>
 <body>
-  <h2 class='is-size-1'>Itunes Project</h2>
-  <div id="profile" class="is-flex is-flex-wrap-wrap is-flex-direction-row"></div>
+  <header>Elliott's Music Search Engine</header>
+
+  <form method="get" action="">
+    <input type="text" name="search" id="search" value="" />
+    <input type="submit" name="submit" value="Search" />
+  </form>
+  <hr>
+  <div id="profile" ></div>
 </body>
 </html>
