@@ -7,11 +7,13 @@ function buildElement(elementType, className, text) {
   return element;
 }
 
+// my revised version to add .src , not currently working
+
 // function buildElement(elementType, className, text) {
 //   let element = document.createElement(elementType);
 //   element.classList.add(className);
 //   if ((elementType = "audio" || "img")) {
-//     return (element.src = text);
+//     element.src = text;
 //   } else {
 //     element.innerText = text;
 //   }

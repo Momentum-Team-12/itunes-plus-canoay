@@ -1,6 +1,8 @@
 
 body {
-    margin-left: 90px;
+    margin-left: 5%;
+    margin-right: 6%;
+    
 }
 
 header {
@@ -12,6 +14,7 @@ header {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .card {
     width: 300px;
@@ -22,20 +25,20 @@ header {
     margin: 40px 40px 40px 40px;
 }
 
-/* img { */
-    /* display: flex; */
-    /* background-image: none; */
-/* } */
-
 hr {
     border-bottom: 3px solid black;
-    margin-left: 2.2%;
+    margin-left: 10%;
     margin-right: 10%;
 }
 
 form {
     width: 75%;
-    margin-left: 2.2%;
+    margin-left: 10%;
     display: flex;
     justify-content: center;
+}
+
+.noResults {
+    font-size: x-large;
+    color: black;
 }
