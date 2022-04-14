@@ -1,17 +1,13 @@
-console.log("linked");
-
-let profileDiv = document.querySelector("#profile");
+let resultDiv = document.querySelector("#resultList");
 let searchForm = document.querySelector("#sForm");
 let searchField = document.querySelector("#input");
 let searchAction = document.querySelector("#search");
-
-console.log(searchAction);
+let resultAnnouncementDiv = document.querySelector("#resultAnnouncement");
 
 searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  console.log(searchField.value);
 
-  removeAllChildNodes(profileDiv);
+  removeAllChildNodes(resultDiv);
 
   fetch(
     `https://proxy-itunes-api.glitch.me/search?term=${searchField.value}&media=music`,
@@ -26,38 +22,58 @@ searchForm.addEventListener("submit", function (event) {
       if (data.results.length <= 0) {
         console.log("noResults");
         let noResultsDiv = buildElement("div", "noResults", "No Results Found");
-        profileDiv.appendChild(noResultsDiv);
+        resultDiv.appendChild(noResultsDiv);
       } else {
         for (let result of data.results) {
-          // Stephen's workaround for art quality issue with Itunes API, slices out the max resolutions stated in fetch and adds higher resolution wording to art URL.
+          // card container to hold info for each result
+          let cardDiv = buildElement("div", "card", " ");
+
+          // Stephen's higher res artwork solution
 
           let artDirectLink = result.artworkUrl100.toString();
           let artConvertedLink = artDirectLink.slice(0, -13) + "300x300bb.jpg";
 
-          let cardDiv = buildElement("div", "card", " ");
-          profileDiv.appendChild(cardDiv);
-
+          //Album image
           let artDiv = buildElement("img", "art", "");
+          artDiv.alt = "Album Image of " + result.collectionName;
+          artDiv.title = result.collectionName;
           artDiv.src = artConvertedLink;
-          cardDiv.appendChild(artDiv);
+          artDiv.addEventListener("mouseover", function (event) {
+            artDiv.innerHTML = artDiv.getAttribute("title");
+          });
 
+          // audio
           let previewDiv = buildElement("audio", "preview", "");
           previewDiv.src = result.previewUrl;
           previewDiv.controls = "controls";
-          cardDiv.appendChild(previewDiv);
 
+          // Track title
           let songDiv = buildElement("div", "song", result.trackName);
-          cardDiv.appendChild(songDiv);
 
+          // Artist Name
           let nameDiv = buildElement("div", "artist", result.artistName);
-          cardDiv.appendChild(nameDiv);
 
-          let dateDiv = buildElement("div", "date", "");
-          dateDiv.innerHTML = `Release Date:
-      ${moment(result.releaseDate).format("MMM YYYY")}`;
+          // Album
+          // let albumDiv = buildElement("div", "album", result.collectionName);
+
+          // Release Date
+          let dateDiv = buildElement(
+            "div",
+            "date",
+            `Release Date:${moment(result.releaseDate).format("MMM YYYY")}`
+          );
+
+          // Attaching defined variables/elements to main div for results
+
+          resultDiv.appendChild(cardDiv);
+          cardDiv.appendChild(artDiv);
+          cardDiv.appendChild(previewDiv);
+          cardDiv.appendChild(songDiv);
+          cardDiv.appendChild(nameDiv);
+          // cardDiv.appendChild(albumDiv);
           cardDiv.appendChild(dateDiv);
+          searchField.value = "";
         }
-        searchField.value = "";
       }
     });
 });
