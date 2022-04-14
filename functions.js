@@ -7,7 +7,7 @@ function buildElement(elementType, className, text) {
   return element;
 }
 
-// Clear search box function
+// Jamie's really great Clear search box function
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
